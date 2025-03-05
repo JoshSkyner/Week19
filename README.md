@@ -1,93 +1,78 @@
-# Week19
+# SCC.111: Term 2 Assessment Task: Code breaker!
 
+This is the resources for the SCC.111 Term 2 Assessment Task.  This task is designed to test your understanding of object-oriented programming, inheritance, polymorphism, and graphical user interfaces in Java.  You will be required to complete the implementation of a simple game called Mastermind.
 
+## Introduction
 
-## Getting started
+Imagine you are part of a software development team developing a Java version of the classic old board game **Mastermind** (see [wikipedia](https://en.wikipedia.org/wiki/Mastermind_(board_game))). You and your colleagues have been contracted to develop a digital version of the game using the *Java Swing* package.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+The work was due to be delivered to your customer in the SCC1x1 lab next week. Your team had completed the work, but one of your junior colleagues' laptop was stolen on a train, and they hadn't checked in two of the classes they were working on back into the repo!  Oh no!
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Without these two core classes, the project won't be delivered on time.  Are you up for the challenge of coding them up ?
 
-## Add your files
+**It is now up to you to complete the project by rewriting these three classes before the deadline in your SCC1x1 lab next week.**
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+## How mastermind works
 
+![The boardgame from 1970s, photo credit [ZeroOne](https://commons.wikimedia.org/wiki/File:Mastermind.jpg)](https://upload.wikimedia.org/wikipedia/commons/2/2d/Mastermind.jpg){width=50%}
+
+Mastermind is a simple game in principle, but quite fiendish to play.
+
+The rules of the game are explained in the task handout on moodle.  Here you will find:
+
+## Resources
+
+Since SCC.111 is a Software Development course and not a course in computer graphics, we’ve provided some images for you.
+
+The repo contains a subfolder 'icons' containing images you can use. Feel free to make use of these in your program. However, if you prefer to create your own graphics for fun, this is of course just fine too.
+
+**Luckily, a complete version of the most complex of the classes have survived.** Clone the following repo to get all the Java code that is left of the project and the sample images.
+
+```bash
+git clone https://scc-source.lancs.ac.uk/scc.Y1/scc.111/Week19
 ```
-cd existing_repo
-git remote add origin https://scc-source.lancs.ac.uk/scc.Y1/scc.111/Week19.git
-git branch -M main
-git push -uf origin main
-```
 
-## Integrate with your tools
+## The Task
 
-- [ ] [Set up project integrations](https://scc-source.lancs.ac.uk/scc.Y1/scc.111/Week19/-/settings/integrations)
+Your task is to complete the implementation of the Mastermind software, by implementing the missing classes. Once completed, you should have a working game, much like the one we've illustrated.
 
-## Collaborate with your team
+In the repo you will find a set of classes.  But **two** critically are missing, lost with the developer's laptop.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+* **Answer.java** - Picks random digits to make up the code to guess.
+* *Code.java* - *missing!*
+* **CodeBreaker.java** - The state of the game (attempt count, answer, guesses array etc.)
+* **CodeBreakerWindow.java** - the main UI setup and user interaction class.
+* **Driver.java** - the main driver, just creates a CodeBreakerWindow.
+* **GuessPanel.java** - an ImagePanel that represents the user's guess.
+* **Image.java** - a class for loading images from a specific file.
+* **ImagePanel.java** - a JPanel subclass with an array of images.
+* **ScorePanel.java** - an ImagePanel that represents the score.
+* *Scorer.java* - *missing!*
 
-## Test and Deploy
+***You may wish to review and analyse these classes to understand how they operate, especially focusing on the user of inheritance, polymorphism and graphical Swing UI elements. No changes are needed to most of these classes, unless you want to change the game's appearance and UI!**
 
-Use the built-in continuous integration in GitLab.
+Unfortunately, the **Code** and **Scorer** classes have been lost. You are required to rewrite these to the following specification, such that they combine with the other classes to make the game work.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+**Code**
 
-***
+- Create a class called `Code` to represent a target code.  Code will be updated by user guesses and when the initial code to guess is picked.
+- One possible solution is to use an attribute (an array of integers) to represent the code sequence; and a further int attribute to represent which digit of the code (position in the array) you're dealing with. *Remember that attributes should not be directly visible from outside the class*.
+- Create a *constructor* method that initializes these attributes.  The constructor should take a single integer parameter, the maximum length of the code.
+- Create and implement the following methods:
 
-# Editing this README
+    `setValue(int)` should add a code value to your code and return the position in the code.
+	`getPosition()` gets the current position in the numbers array.
+	`getLength()` is an accessor for the length of the code (i.e. numbers array).
+	`boolean isComplete()` checks whether all the code values have been set
+	`getCodeAsString()` Gets the code as a string of numbers.
+	 int[] getCode() - Returns the code as an array of integers.
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+**Scorer**
 
-## Suggestions for a good README
+- Create a class called `Scorer` to represent the score calculation function of the game.
+- Implement a method `compareCorrect` that takes two `Code` parameters (the guess and the answer in that order) and calculates how many code digits are correct and in the right place.  It should return this as an integer.
+- Implement a further method `comparePartiallyCorrect`, that similarly takes a guess and an answer (Code parameters) and returns the number of digits that are correct but not in the correct places.  This should be returned as an integer.
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+**Submission**
 
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+You will submit your work **during the end of term in-lab quiz in Week 20**. Ensure you keep your work safe until then.  Getting the game working will increase your confidence that `Code` and `Scorer` are behaving correctly.  You will need to submit a complete version of your code.  **The code must be able to compile from the command line on the lab machines**.  You may use any IDE to develop your code, but it must be able to compile and run from the command line.
