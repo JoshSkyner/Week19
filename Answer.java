@@ -1,6 +1,11 @@
 import java.util.Random;
 
 public class Answer extends Code {
+    
+    /**
+     * Constructor. Creates a new instance of the Answer with a random code.
+     * @param numSymbols Number of symbols to include in the code
+     */
     public Answer(int numSymbols)
     {
         super(numSymbols);

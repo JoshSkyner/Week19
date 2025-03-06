@@ -15,6 +15,11 @@ public class CodeBreakerWindow extends JFrame implements ActionListener {
 
     CodeBreaker codeBreaker;
 
+    /**
+     * Constructor. Creates a new instance of the CodeBreakerWindow with all UI panels.
+     * @param codeLength Length of the code to break
+     * @param noOfAttempts Number of attempts allowed
+     */
     public CodeBreakerWindow(int codeLength, int noOfAttempts)
     {
         this.codeLength = codeLength;
@@ -127,17 +132,20 @@ public class CodeBreakerWindow extends JFrame implements ActionListener {
             endGame("Oops! You lost this time. Try again!", "Game Over");
     }
 
+    /**
+     * Helper function. Disables all buttons in the input panel.
+     */
     private void disableInputPanel()
     {
         for (JButton b : this.inputButtons)
             b.setEnabled(false);
     }
 
-    /**
-     * Ends the game with a given output to the console.
-     *
-     * @param gameEndOutput The String to output to the console.
-     */
+     /**
+      * Ends the game with a message.
+      * @param gameEndOutput The message to show to the user.
+      * @param title The title of the message.
+      */
     private void endGame(String gameEndOutput, String title) {
         System.out.println(gameEndOutput);
         JOptionPane.showMessageDialog(this, gameEndOutput, title, JOptionPane.INFORMATION_MESSAGE);

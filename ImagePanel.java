@@ -4,6 +4,11 @@ import java.awt.*;
 public class ImagePanel extends JPanel {
     private JLabel[] images;
 
+    /**
+     * Constructor. Creates a new instance of the ImagePanel with an empty images grid.
+     * @param length Images per row
+     * @param rows Number of rows
+     */
     public ImagePanel(int length, int rows)
     {
         this.setBackground(CodeBreakerWindow.BROWN);
