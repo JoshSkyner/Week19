@@ -107,6 +107,8 @@ public class CodeBreakerWindow extends JFrame implements ActionListener {
      */
     public void actionPerformed(ActionEvent e)
     {
+        boolean gameEnded = false;
+
         for (int i = 0; i < inputButtons.length; i++) {
             if (e.getSource() == inputButtons[i]) {
                 int[] positions = codeBreaker.updateGuess(i);
@@ -121,14 +123,16 @@ public class CodeBreakerWindow extends JFrame implements ActionListener {
                     updateScorePanel(currentAttempt, correctCount, partiallyCorrectCount);
                     codeBreaker.updateAttempt();
 
-                    if (correctCount == codeLength)
+                    if (correctCount == codeLength) {
                         endGame("Congratulations! You won the game!", "Winner!");
+                        gameEnded = true;
+                    }
                 }
             }
         }
 
         // If max no. guesses has been reached
-        if (codeBreaker.getAttempt() == noOfAttempts)
+        if (!gameEnded && codeBreaker.getAttempt() == noOfAttempts)
             endGame("Oops! You lost this time. Try again!", "Game Over");
     }
 
