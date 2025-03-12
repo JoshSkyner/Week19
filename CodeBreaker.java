@@ -13,6 +13,8 @@ public class CodeBreaker {
     // The scoring algorithm (how many matches)
     private Scorer scorer;
 
+    private int codeLength;
+
     /**
      * Constructor. Creates a new instance of the CodeBreaker with the 
      * given code length and number of attempts.
@@ -23,6 +25,7 @@ public class CodeBreaker {
     {
         attempt = 0;
         answer = new Answer(codeLength);
+        this.codeLength = codeLength;
 
         guesses = new Code[noOfAttempts];
 
@@ -96,8 +99,8 @@ public class CodeBreaker {
         if (correctCount < answer.getLength())
             partiallyCorrectCount = scorer.comparePartiallyCorrect(guesses[attempt], answer);
 
-            if(correctCount + partiallyCorrectCount > 4){
-                partiallyCorrectCount = 4 - correctCount;
+            if(correctCount + partiallyCorrectCount > (codeLength*2)){
+                partiallyCorrectCount = (codeLength*2) - correctCount;
             }
 
         return new int[] { correctCount, partiallyCorrectCount };
