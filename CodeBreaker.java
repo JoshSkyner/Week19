@@ -76,6 +76,7 @@ public class CodeBreaker {
      */
     public boolean isGuessComplete()
     {
+        System.out.println(guesses[attempt].isComplete());
         return guesses[attempt].isComplete();
     }
 
@@ -94,6 +95,10 @@ public class CodeBreaker {
         // If they're not all correct, then check for partially correct answers
         if (correctCount < answer.getLength())
             partiallyCorrectCount = scorer.comparePartiallyCorrect(guesses[attempt], answer);
+
+            if(correctCount + partiallyCorrectCount > 4){
+                partiallyCorrectCount = 4 - correctCount;
+            }
 
         return new int[] { correctCount, partiallyCorrectCount };
     }
