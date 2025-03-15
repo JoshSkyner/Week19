@@ -45,7 +45,7 @@ public class Code
         int[] testArray = this.getCode();
         
         for(int i=0; i<numSymbols; i++){
-            System.out.println(testArray[i]);
+            //System.out.println(testArray[i]);
             if(testArray[i] != -1){
 
                 count+=1;

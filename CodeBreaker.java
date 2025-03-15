@@ -79,7 +79,7 @@ public class CodeBreaker {
      */
     public boolean isGuessComplete()
     {
-        System.out.println(guesses[attempt].isComplete());
+        
         return guesses[attempt].isComplete();
     }
 
