@@ -99,8 +99,8 @@ public class CodeBreaker {
         if (correctCount < answer.getLength())
             partiallyCorrectCount = scorer.comparePartiallyCorrect(guesses[attempt], answer);
 
-            if(correctCount + partiallyCorrectCount > (codeLength*2)){
-                partiallyCorrectCount = (codeLength*2) - correctCount;
+            if(correctCount + partiallyCorrectCount > (codeLength)){
+                partiallyCorrectCount = (codeLength) - correctCount;
             }
 
         return new int[] { correctCount, partiallyCorrectCount };
